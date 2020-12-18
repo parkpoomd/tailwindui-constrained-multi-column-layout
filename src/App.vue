@@ -310,6 +310,157 @@
             <!-- /Dashboard header -->
           </div>
         </div>
+        <div class="bg-white lg:min-w-0 lg:flex-1">
+          <!-- Project list -->
+          <div>
+            <div
+              class="pl-4 pr-6 pt-4 pb-4 border-b border-t border-gray-200 sm:pl-6 lg:pl-8 xl:pt-6 xl:border-t-0"
+            >
+              <div class="flex items-center">
+                <h1 class="flex-1 text-lg leading-7 font-medium">
+                  Recent Projects
+                </h1>
+                <div class="flex relative space-x-3">
+                  <span class="rounded-md shadow-sm">
+                    <button
+                      type="button"
+                      class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                    >
+                      Filters
+                    </button>
+                  </span>
+                  <span class="rounded-md shadow-sm">
+                    <button
+                      type="button"
+                      class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                    >
+                      <svg
+                        class="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"
+                        /></svg
+                      >Sort
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ul
+              class="relative z-0 divide-y divide-gray-200 border-b border-gray-200"
+            >
+              <li v-for="project in projects" :key="project.name">
+                <div
+                  class="relative flex items-center justify-between space-x-4 hover:bg-gray-50 pl-4 pr-6 py-5 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6"
+                >
+                  <!-- Repo name and link -->
+                  <div class="min-w-0 space-y-3">
+                    <div class="flex items-center space-x-3">
+                      <span
+                        :aria-label="project.active ? 'Active' : 'Inactive'"
+                        class="h-4 w-4 rounded-full flex items-center justify-center"
+                        :class="project.active ? 'bg-green-100' : 'bg-gray-100'"
+                      >
+                        <span
+                          class="h-2 w-2 rounded-full"
+                          :class="
+                            project.active ? 'bg-green-400' : 'bg-gray-400'
+                          "
+                        ></span>
+                      </span>
+
+                      <span class="block">
+                        <h2 class="text-sm font-medium leading-5">
+                          <a href="#">
+                            <span class="absolute inset-0"></span>
+                            {{ project.name }}
+                          </a>
+                        </h2>
+                      </span>
+                    </div>
+                    <div class="relative">
+                      <a
+                        :href="project.repoUrl"
+                        class="group flex items-center space-x-2"
+                      >
+                        <svg
+                          class="h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 1C5.03 1 1 5.025 1 9.991c0 3.973 2.579 7.343 6.155 8.532.45.082.614-.195.614-.434 0-.213-.007-.779-.012-1.529-2.503.543-3.031-1.205-3.031-1.205-.41-1.039-1-1.316-1-1.316-.817-.557.062-.546.062-.546.903.063 1.378.927 1.378.927.803 1.374 2.107.977 2.62.747.082-.581.314-.977.571-1.202-1.998-.227-4.1-.998-4.1-4.444 0-.981.351-1.784.927-2.412-.093-.228-.402-1.142.089-2.38 0 0 .755-.242 2.474.922.718-.2 1.488-.3 2.253-.303a8.638 8.638 0 012.253.303c1.719-1.164 2.473-.922 2.473-.922.491 1.238.182 2.152.09 2.38.577.628.925 1.43.925 2.412 0 3.454-2.105 4.214-4.11 4.437.323.277.611.826.611 1.665 0 1.202-.01 2.171-.01 2.466 0 .24.162.52.618.433 3.574-1.192 6.15-4.56 6.15-8.53C19 5.024 14.97 1 10 1z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        <span
+                          class="text-sm text-gray-500 leading-5 font-medium group-hover:text-gray-900"
+                          >{{ project.repo }}</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                  <div class="sm:hidden">
+                    <svg
+                      class="h-5 w-5 text-gray-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <!-- Repo meta info -->
+                  <div
+                    class="hidden sm:flex flex-col flex-shrink-0 items-end space-y-3"
+                  >
+                    <p class="relative flex items-center space-x-4">
+                      <a
+                        :href="project.url"
+                        class="relative text-sm leading-5 text-gray-500 hover:text-gray-900 font-medium"
+                        >Visit site</a
+                      >
+                      <button
+                        type="button"
+                        :class="[
+                          'inline-flex h-5 w-5',
+                          project.starred
+                            ? 'text-yellow-300 hover:text-yellow-400'
+                            : 'text-gray-300 hover:text-gray-400',
+                        ]"
+                      >
+                        <svg
+                          class="h-full w-full"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                          />
+                        </svg>
+                      </button>
+                    </p>
+                    <p class="flex text-gray-500 text-sm leading-5 space-x-2">
+                      <span>{{ project.tech }}</span>
+                      <span>&middot;</span>
+                      <span>Last deploy {{ project.lastDeploy }}</span>
+                      <span>&middot;</span>
+                      <span>{{ project.location }}</span>
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /Project list -->
+        </div>
       </div>
     </div>
     <!-- /3 column wrapper -->
@@ -332,6 +483,107 @@ export default {
         membership: 'Pro',
         githubUrl: 'https://example.com/debbielewis',
       },
+      projects: [
+        {
+          name: 'Workcation',
+          repo: 'debbielewis/workcation',
+          repoUrl: 'https://example.com/debbielewis/workcation',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '3h ago',
+          location: 'United States',
+          starred: true,
+          active: true,
+        },
+        {
+          name: 'EasyWire',
+          repo: 'debbielewis/easywire',
+          repoUrl: 'https://example.com/debbielewis/easywire',
+          url: '#',
+          tech: 'NextJS',
+          lastDeploy: '6h ago',
+          location: 'United States',
+          starred: true,
+          active: true,
+        },
+        {
+          name: 'Workflow',
+          repo: 'debbielewis/workflow',
+          repoUrl: 'https://example.com/debbielewis/workflow',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '4d ago',
+          location: 'United States',
+          starred: true,
+          active: true,
+        },
+        {
+          name: 'KiteTail',
+          repo: 'debbielewis/kitetail',
+          repoUrl: 'https://example.com/debbielewis/kitetail',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '4d ago',
+          location: 'United States',
+          starred: false,
+          active: false,
+        },
+        {
+          name: 'Talk Slides',
+          repo: 'debbielewis/talk-slides',
+          repoUrl: 'https://example.com/debbielewis/talk-slides',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '3h ago',
+          location: 'United States',
+          starred: true,
+          active: true,
+        },
+        {
+          name: 'Personal Website',
+          repo: 'debbielewis/personal-website',
+          repoUrl: 'https://example.com/debbielewis/personal-website',
+          url: '#',
+          tech: 'NextJS',
+          lastDeploy: '6h ago',
+          location: 'United States',
+          starred: false,
+          active: true,
+        },
+        {
+          name: 'Digest',
+          repo: 'debbielewis/digest',
+          repoUrl: 'https://example.com/debbielewis/digest',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '3h ago',
+          location: 'United States',
+          starred: false,
+          active: false,
+        },
+        {
+          name: 'Resumaid',
+          repo: 'debbielewis/resumaid',
+          repoUrl: 'https://example.com/debbielewis/resumaid',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '3h ago',
+          location: 'United States',
+          starred: false,
+          active: true,
+        },
+        {
+          name: 'SponsorShip',
+          repo: 'debbielewis/sponsorship',
+          repoUrl: 'https://example.com/debbielewis/sponsorship',
+          url: '#',
+          tech: 'Laravel',
+          lastDeploy: '3h ago',
+          location: 'United States',
+          starred: false,
+          active: false,
+        },
+      ],
     };
   },
 };
